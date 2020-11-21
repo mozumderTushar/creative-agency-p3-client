@@ -41,7 +41,7 @@ const Footer = () => {
 
                     </div>
                 </div>
-                <p className="text-center mt-5"> Copyright Mayen Uddin Mozumder  {(new Date()).getFullYear()}</p>
+                <p className="text-center mt-5"> &copy; Mayen Uddin {(new Date()).getFullYear()} | All Rights Reserved  </p>
             </div>
         </footer>
     );
