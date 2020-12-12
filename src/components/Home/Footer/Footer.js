@@ -2,7 +2,7 @@ import React from 'react';
 import emailjs from "emailjs-com";
 
 const Footer = () => {
-
+    
     function sendEmail(e) {
         e.preventDefault();
 
@@ -15,7 +15,6 @@ const Footer = () => {
         alert('Your Message Successfully Send')
         e.target.reset()
     }
-
 
     return (
         <footer className="clear-both mt-5" style={{ backgroundColor: '#FBD062', height: 'auto', marginBottom: '0px' }}>

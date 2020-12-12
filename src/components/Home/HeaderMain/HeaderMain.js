@@ -1,7 +1,8 @@
 import React from 'react';
 import headerImg from '../../../images/logos/headerImg.png'
 
-const HeaderContainer = () => {
+
+const HeaderMain = () => {
     return (
         <main className="row d-flex align-items-center" style={{ height: '700px' }}>
             <div className="col-md-4 offset-md-1">
@@ -16,4 +17,4 @@ const HeaderContainer = () => {
     );
 };
 
-export default HeaderContainer;
+export default HeaderMain;

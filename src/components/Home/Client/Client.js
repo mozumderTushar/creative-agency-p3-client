@@ -5,7 +5,6 @@ import uber from '../../../images/logos/uber.png'
 import netflix from '../../../images/logos/netflix.png'
 import airbnb from '../../../images/logos/airbnb.png'
 
-
 const Client = () => {
     return (
         <div className="container my-5">

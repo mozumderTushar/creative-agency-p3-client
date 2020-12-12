@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import { Card, Form } from 'react-bootstrap';
@@ -25,21 +25,36 @@ const Login = () => {
     })
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [adminList, setAdminList] = useState([]);
+
     let history = useHistory();
     let location = useLocation();
 
     let { from } = location.state || { from: { pathname: "/" } };
 
+    useEffect(() => {
+        fetch('https://agile-cove-78620.herokuapp.com/allAdmin')
+            .then(response => response.json())
+            .then(data => {
+                setAdminList(data)
+            })
+    }, [])
+
     //google log in btn
     const handleGoogleSignIn = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider).then(function (result) {
-            const { displayName, email } = result.user;
-            const signedInUser = { name: displayName, email }
+            const { displayName, email, photoURL } = result.user;
+            const signedInUser = { name: displayName, email, photoURL }
             setLoggedInUser(signedInUser)
-            console.log(signedInUser, from);
-            history.replace(from);
 
+            const isAdmin = adminList?.find(admin => admin.email === signedInUser.email);
+            if (isAdmin) {
+                history.push('/sidebar');
+            }
+            else {
+                history.push('/')
+            }
         }).catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -223,8 +238,7 @@ const Login = () => {
                 </Card.Body>
             </Card>
 
-            {/* fb */}
-            <button className="facebook-button" onClick={handleFbSignIn}>Continue with Facebook</button>
+            
 
             {/* google */}
             {
