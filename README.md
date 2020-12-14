@@ -25,6 +25,6 @@
 *   MongoDB
 *   Heroku
 
-**[BACK END REPOSITORY](https://github.com/mozumderTushar/creative-agency-server.git)**
+**[BACK END REPOSITORY](https://github.com/mozumderTushar/creative-agency-p3-server.git)**
 
 
